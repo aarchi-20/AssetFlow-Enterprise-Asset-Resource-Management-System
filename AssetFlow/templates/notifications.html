@@ -31,7 +31,7 @@
         <a href="/maintenance" class="nav-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M14.7 6.3a4 4 0 00-5.4 5.4L3 18v3h3l6.3-6.3a4 4 0 005.4-5.4l-2.8 2.8-2-2 2.8-2.8z"/></svg><span>Maintenance</span></a>
         <a href="/audit" class="nav-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="5" y="3.5" width="14" height="17" rx="2"/><path d="M9 3v2h6V3M9 11l2 2 4-4M9 16h6"/></svg><span>Audit</span></a>
         <a href="/reports" class="nav-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 20V10M12 20V4M20 20v-7"/></svg><span>Reports</span></a>
-        <a href="/notifications" class="nav-link active"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M18 8a6 6 0 10-12 0c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.7 21a2 2 0 01-3.4 0"/></svg><span>Notifications</span><span class="nav-badge">5</span></a>
+        <a href="/notifications" class="nav-link active"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M18 8a6 6 0 10-12 0c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.7 21a2 2 0 01-3.4 0"/></svg><span>Notifications</span></a>
 
     <div class="sidebar-footer">
       <span class="role-pill">
@@ -40,6 +40,8 @@
       </span>
     </div>
   </aside>
+
+
   <div class="sidebar-scrim" data-menu-toggle-scrim></div>
   <div class="main-col">
     <header class="topbar">
@@ -61,6 +63,8 @@
         </div>
       </div>
     </header>
+
+
     <main class="content">
 
       <div class="page-head">
@@ -83,41 +87,17 @@
 
       <div class="card">
         <ul class="notif-list card-pad" style="padding-top:6px;padding-bottom:6px;">
+          {% for notification in notification_list %}
           <li class="notif-item" data-notif-type="approvals">
-        <div class="notif-icon i-approve"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M7 3L3 7l4 4"/><path d="M3 7h13a4 4 0 014 4v1"/><path d="M17 21l4-4-4-4"/><path d="M21 17H8a4 4 0 01-4-4v-1"/></svg></div>
-        <div class="notif-body"><p class="n-text">Laptop <span class='tag-code'>AF-0114</span> assigned to Priya Shah</p><p class="n-time">2m ago</p></div>
-        <span class="notif-dot-unread"></span>
-      </li>
-          <li class="notif-item" data-notif-type="approvals">
-        <div class="notif-icon i-approve"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M14.7 6.3a4 4 0 00-5.4 5.4L3 18v3h3l6.3-6.3a4 4 0 005.4-5.4l-2.8 2.8-2-2 2.8-2.8z"/></svg></div>
-        <div class="notif-body"><p class="n-text">Maintenance request <span class='tag-code'>AF-0055</span> approved</p><p class="n-time">18m ago</p></div>
-        <span class="notif-dot-unread"></span>
-      </li>
-          <li class="notif-item" data-notif-type="bookings">
-        <div class="notif-icon i-booking"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="4.5" width="18" height="16" rx="2"/><path d="M3 9.5h18M8 3v3M16 3v3"/><path d="M8 14h2M14 14h2M8 17h2"/></svg></div>
-        <div class="notif-body"><p class="n-text">Booking confirmed &middot; Room B2 &middot; 2:00&ndash;3:00 PM</p><p class="n-time">1h ago</p></div>
-        <span style="width:7px;"></span>
-      </li>
-          <li class="notif-item" data-notif-type="approvals">
-        <div class="notif-icon i-approve"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M7 3L3 7l4 4"/><path d="M3 7h13a4 4 0 014 4v1"/><path d="M17 21l4-4-4-4"/><path d="M21 17H8a4 4 0 01-4-4v-1"/></svg></div>
-        <div class="notif-body"><p class="n-text">Transfer approved &middot; <span class='tag-code'>AF-0033</span> to Facilities Dept</p><p class="n-time">3h ago</p></div>
-        <span style="width:7px;"></span>
-      </li>
-          <li class="notif-item" data-notif-type="alerts">
-        <div class="notif-icon i-alert"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="5" y="3.5" width="14" height="17" rx="2"/><path d="M9 3v2h6V3M9 11l2 2 4-4M9 16h6"/></svg></div>
-        <div class="notif-body"><p class="n-text">Audit discrepancy flagged &middot; <span class='tag-code'>AF-0088</span> damaged</p><p class="n-time">1d ago</p></div>
-        <span style="width:7px;"></span>
-      </li>
-          <li class="notif-item" data-notif-type="alerts">
-        <div class="notif-icon i-alert"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M18 8a6 6 0 10-12 0c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.7 21a2 2 0 01-3.4 0"/></svg></div>
-        <div class="notif-body"><p class="n-text">Overdue return: <span class='tag-code'>AF-0021</span> was due 3 days ago</p><p class="n-time">2d ago</p></div>
-        <span style="width:7px;"></span>
-      </li>
-          <li class="notif-item" data-notif-type="bookings">
-        <div class="notif-icon i-booking"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="4.5" width="18" height="16" rx="2"/><path d="M3 9.5h18M8 3v3M16 3v3"/><path d="M8 14h2M14 14h2M8 17h2"/></svg></div>
-        <div class="notif-body"><p class="n-text">Reminder: Room A1 booking starts in 30 minutes</p><p class="n-time">2d ago</p></div>
-        <span style="width:7px;"></span>
-      </li>
+            <div class="notif-icon i-approve">
+               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M7 3L3 7l4 4"/><path d="M3 7h13a4 4 0 014 4v1"/><path d="M17 21l4-4-4-4"/><path d="M21 17H8a4 4 0 01-4-4v-1"/></svg>
+            </div>
+            <div class="notif-body">
+               <p class="n-text"> {{ notification.assest_name }} <span class='tag-code'>{{ notification.asset_code }}</span> {{ notification.message }}</p><p class="n-time">{{ notification.created_at }}</p>
+            </div>
+            <span class="notif-dot-unread"></span>
+          </li>
+          {% endfor %}
         </ul>
       </div>
 
@@ -125,13 +105,45 @@
         <div class="card-head"><h3>Full activity log</h3><span class="hint">Who did what, when</span></div>
         <div class="table-wrap card-pad">
           <table class="data-table log-table">
-            <thead><tr><th>Actor</th><th>Action</th><th>Target</th><th>Timestamp</th></tr></thead>
+            <thead>
+              <tr>
+                <th>Actor</th>
+                <th>Action</th>
+                <th>Target</th>
+                <th>Timestamp</th>
+              </tr>
+            </thead>
             <tbody>
-              <tr><td>Rohan Verma</td><td>Allocated asset</td><td><span class="tag-code">AF-0114</span></td><td class="mono faint">Jul 7, 09:14</td></tr>
-              <tr><td>Aditi Rao</td><td>Approved maintenance</td><td><span class="tag-code">AF-0055</span></td><td class="mono faint">Jul 7, 08:56</td></tr>
-              <tr><td>Priya Shah</td><td>Booked resource</td><td>Room B2</td><td class="mono faint">Jul 7, 08:12</td></tr>
-              <tr><td>Sana Iqbal</td><td>Flagged discrepancy</td><td><span class="tag-code">AF-0088</span></td><td class="mono faint">Jul 6, 17:40</td></tr>
-              <tr><td>System</td><td>Overdue alert generated</td><td><span class="tag-code">AF-0021</span></td><td class="mono faint">Jul 5, 06:00</td></tr>
+              <tr>
+                <td>Rohan Verma</td>
+                <td>Allocated asset</td>
+                <td><span class="tag-code">AF-0114</span></td>
+                <td class="mono faint">Jul 7, 09:14</td>
+              </tr>
+              <tr>
+                <td>Aditi Rao</td>
+                <td>Approved maintenance</td>
+                <td><span class="tag-code">AF-0055</span></td>
+                <td class="mono faint">Jul 7, 08:56</td>
+              </tr>
+              <tr>
+                <td>Priya Shah</td>
+                <td>Booked resource</td>
+                <td>Room B2</td>
+                <td class="mono faint">Jul 7, 08:12</td>
+              </tr>
+              <tr>
+                <td>Sana Iqbal</td>
+                <td>Flagged discrepancy</td>
+                <td><span class="tag-code">AF-0088</span></td>
+                <td class="mono faint">Jul 6, 17:40</td>
+              </tr>
+              <tr>
+                <td>System</td>
+                <td>Overdue alert generated</td>
+                <td><span class="tag-code">AF-0021</span></td>
+                <td class="mono faint">Jul 5, 06:00</td>
+              </tr>
             </tbody>
           </table>
         </div>

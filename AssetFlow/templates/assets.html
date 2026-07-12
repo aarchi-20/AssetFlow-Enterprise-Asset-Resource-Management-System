@@ -29,7 +29,7 @@
         <a href="/booking" class="nav-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="4.5" width="18" height="16" rx="2"/><path d="M3 9.5h18M8 3v3M16 3v3"/><path d="M8 14h2M14 14h2M8 17h2"/></svg><span>Resource Booking</span></a>
         <a href="/maintenance" class="nav-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M14.7 6.3a4 4 0 00-5.4 5.4L3 18v3h3l6.3-6.3a4 4 0 005.4-5.4l-2.8 2.8-2-2 2.8-2.8z"/></svg><span>Maintenance</span></a>
         <a href="/reports" class="nav-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 20V10M12 20V4M20 20v-7"/></svg><span>Reports</span></a>
-        <a href="/notifications" class="nav-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M18 8a6 6 0 10-12 0c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.7 21a2 2 0 01-3.4 0"/></svg><span>Notifications</span><span class="nav-badge">5</span></a>
+        <a href="/notifications" class="nav-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M18 8a6 6 0 10-12 0c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.7 21a2 2 0 01-3.4 0"/></svg><span>Notifications</span></a>
 
     <div class="sidebar-footer">
       <span class="role-pill">
@@ -38,6 +38,7 @@
       </span>
     </div>
   </aside>
+
   <div class="sidebar-scrim" data-menu-toggle-scrim></div>
   <div class="main-col">
     <header class="topbar">
@@ -58,6 +59,8 @@
         </div>
       </div>
     </header>
+
+
     <main class="content">
 
       <div class="page-head">
@@ -72,53 +75,115 @@
       </div>
 
       <div class="filter-bar">
-        <label class="search-field"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg><input placeholder="Search by tag, serial, or QR code&hellip;"></label>
-        <select class="select"><option>All categories</option><option>Electronics</option><option>Furniture</option><option>Vehicles</option></select>
-        <select class="select"><option>All statuses</option><option>Available</option><option>Allocated</option><option>Reserved</option><option>Under Maintenance</option><option>Lost</option><option>Retired</option><option>Disposed</option></select>
-        <select class="select"><option>All departments</option><option>Engineering</option><option>Facilities</option></select>
-        <select class="select"><option>All locations</option><option>Bengaluru HQ</option><option>Warehouse</option></select>
+        <label class="search-field">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
+          <input placeholder="Search by tag, serial, or QR code&hellip;">
+        </label>
+        <form method="get">
+         <select class="select" name="category" onchange="this.form.submit()">
+          <option value="">All categories</option>
+          <option value="electronics">Electronics</option>
+         </select>
+        <select class="select" name="status" onchange="this.form.submit()">
+          <option value="">All statuses</option>
+          <option value="available">Available</option>
+          <option value="allocated">Allocated</option>
+          <option value="reserved">Reserved</option>
+          <option value="under-maintenance">Under Maintenance</option>
+          <option value="lost">Lost</option>
+          <option value="retired">Retired</option>
+          <option value="disposed">Disposed</option>
+        </select>
+        <select class="select">
+          <option>All departments</option>
+          <option>Engineering</option>
+          <option>Facilities</option>
+        </select>
+        <select class="select">
+          <option>All locations</option>
+          <option>Bengaluru HQ</option>
+          <option>Warehouse</option>
+        </select>
       </div>
 
       <div class="card">
         <div class="table-wrap">
           <table class="data-table">
-            <thead><tr><th>Asset</th><th>Category</th><th>Status</th><th>Department</th><th>Location</th><th>Condition</th><th></th></tr></thead>
-            <tbody>
+            <thead>
               <tr>
-                <td><span class="tag-code">AF-0012</span><div class="row-title mt-8">Dell Laptop</div><div class="row-sub">SN&nbsp;DL-88213</div></td>
-                <td>Electronics</td>
-                <td><span class="chip chip-allocated"><span class="dot"></span>Allocated</span></td>
-                <td>Engineering</td>
-                <td>HQ Floor 2</td>
-                <td>Good</td>
+                <th>Asset</th>
+                <th>Category</th>
+                <th>Status</th>
+                <th>Department</th>
+                <th>Location</th>
+                <th>Condition</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for asset in asset_list %}
+              <tr>
+                <td>
+                  <span class="tag-code">{{ asset.tag }}</span>
+                  <div class="row-title mt-8">{{ asset.name }}</div>
+                  <div class="row-sub">SN&nbsp;DL-88213</div>
+                </td>
+                <td>{{ asset.category }}</td>
+                <td>
+                  <span class="chip chip-allocated">
+                    <span class="dot"></span>{{ asset.status }}
+                  </span>
+                </td>
+                <td>{{ asset.department }}</td>
+                <td>{{ asset.location }}</td>
+                <td>{{ asset.condition }}</td>
                 <td class="table-actions"><a href="/allocation" class="btn btn-sm btn-ghost">History</a></td>
               </tr>
+              {% endfor %}
             </tbody>
           </table>
         </div>
       </div>
 
       <div class="card mt-20">
-        <div class="card-head"><h3><span class="tag-code">AF-0114</span> &middot; Dell Laptop &mdash; asset history</h3><span class="hint">Allocation + maintenance history</span></div>
+        <div class="card-head">
+          <h3>
+            <span class="tag-code">{{ asset.tag }}</span> &middot; {{ asset.name }} &mdash; asset history</h3>
+            <span class="hint">Allocation + maintenance history</span>
+          </div>
         <div class="grid grid-2 card-pad">
           <div>
             <p class="section-title"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M7 3L3 7l4 4"/><path d="M3 7h13a4 4 0 014 4v1"/><path d="M17 21l4-4-4-4"/><path d="M21 17H8a4 4 0 01-4-4v-1"/></svg> Allocation history</p>
             <div class="timeline">
-              <div class="timeline-item"><div class="t-date">Mar 12, 2026</div><div class="t-desc">Allocated to Priya Shah &middot; Engineering</div></div>
-              <div class="timeline-item"><div class="t-date">Jan 04, 2026</div><div class="t-desc">Returned by Arjun Nair &middot; condition: good</div></div>
-              <div class="timeline-item"><div class="t-date">Aug 21, 2025</div><div class="t-desc">Allocated to Arjun Nair &middot; Procurement</div></div>
+              <div class="timeline-item">
+                <div class="t-date">{{ asset.allocation_date }}</div>
+                <div class="t-desc">{{ asset.allocated_to }} &middot; {{ asset.allocated_department }}</div>
+              </div>
+              <div class="timeline-item">
+                <div class="t-date">{{ asset.return_date }}</div>
+                <div class="t-desc">Returned by {{ asset.returned_by }} &middot; condition: {{ asset.return_condition }}</div>
+              </div>
+              <div class="timeline-item">
+                <div class="t-date">{{ asset.reallocation_date }}</div>
+                <div class="t-desc">Allocated to {{ asset.reallocated_to }} &middot; {{ asset.reallocated_department }}</div>
+              </div>
             </div>
           </div>
           <div>
             <p class="section-title"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M14.7 6.3a4 4 0 00-5.4 5.4L3 18v3h3l6.3-6.3a4 4 0 005.4-5.4l-2.8 2.8-2-2 2.8-2.8z"/></svg> Maintenance history</p>
             <div class="timeline">
-              <div class="timeline-item"><div class="t-date">Feb 02, 2026</div><div class="t-desc">Keyboard replacement &mdash; resolved</div></div>
-              <div class="timeline-item"><div class="t-date">Oct 15, 2025</div><div class="t-desc">Battery service &mdash; resolved</div></div>
+              <div class="timeline-item">
+                <div class="t-date">{{ asset.maintenance_date }}</div>
+                <div class="t-desc">{{ asset.maintenance_description }} &mdash; {{ asset.maintenance_status }}</div>
+              </div>
+              <div class="timeline-item">
+                <div class="t-date">{{ asset.battery_service_date }}</div>
+                <div class="t-desc">{{ asset.battery_service_description }} &mdash; {{ asset.battery_service_status }}</div>
+              </div>
             </div>
           </div>
         </div>
       </div>
-
     </main>
   </div>
 </div>
@@ -128,38 +193,70 @@
 <div class="modal-overlay" id="modal-register-asset">
   <div class="modal">
     <div class="modal-head">
-      <div><h3>Register asset</h3><p>New assets enter the system as <strong>Available</strong>.</p></div>
+      <div>
+        <h3>Register asset</h3>
+        <p>New assets enter the system as <strong>Available</strong>.</p></div>
       <button class="modal-close" data-close-modal>&times;</button>
     </div>
+    <form method="post" action="{% url 'register_asset' %}">
+      {% csrf_token %}
     <div class="modal-body">
       <div class="field-row">
-        <div class="field"><label>Asset name</label><input class="input" placeholder="e.g. Dell Latitude 5420"></div>
-        <div class="field"><label>Category</label><select class="select"><option>Electronics</option><option>Furniture</option><option>Vehicles</option></select></div>
-      </div>
-      <div class="field-row">
-        <div class="field"><label>Asset tag</label><input class="input mono" value="AF-0327" disabled></div>
-        <div class="field"><label>Serial number</label><input class="input" placeholder="SN-2201938"></div>
-      </div>
-      <div class="field-row">
-        <div class="field"><label>Acquisition date</label><input class="input" type="date"></div>
-        <div class="field"><label>Acquisition cost</label><input class="input" placeholder="For reports only"></div>
-      </div>
-      <div class="field-row">
-        <div class="field"><label>Condition</label><select class="select"><option>New</option><option>Good</option><option>Fair</option></select></div>
-        <div class="field"><label>Location</label><input class="input" placeholder="HQ Floor 2"></div>
-      </div>
-      <div class="checkbox-row mb-14"><input type="checkbox" id="bookable"><label for="bookable">Shared / bookable resource</label></div>
-      <div class="field">
-        <label>Photo / documents</label>
-        <div class="upload-drop">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 16V4M7 9l5-5 5 5"/><path d="M4 16v3a2 2 0 002 2h12a2 2 0 002-2v-3"/></svg>
-          Drag a file here or click to upload
+        <div class="field">
+          <label>Asset name</label>
+          <input class="input" name="name">
         </div>
+        <div class="field">
+          <label>Category</label>
+          <select class="select">
+            {% for cat in categories %}
+            <option value="{{ cat.id }}">{{ cat.name }}</option>
+            {% endfor %}
+          </select>
+        </div>
+      </div>
+      <div class="field-row">
+        <div class="field">
+          <label>Asset tag</label>
+          <input class="input mono" name="tag">
+        </div>
+        <div class="field">
+          <label>Serial number</label>
+          <input class="input" name="serial_number">
+        </div>
+      </div>
+      <div class="field-row">
+        <div class="field">
+          <label>Acquisition date</label>
+          <input class="input" type="date" name="acquisition_date">
+        </div>
+        <div class="field">
+          <label>Acquisition cost</label>
+          <input class="input" name="acquisition_cost">
+        </div>
+      </div>
+      <div class="field-row">
+        <div class="field">
+          <label>Condition</label>
+          <select class="select">
+            <option>New</option>
+            <option>Good</option>
+            <option>Fair</option>
+          </select>
+        </div>
+        <div class="field">
+          <label>Location</label>
+          <input class="input" name="location">
+        </div>
+      </div>
+      <div class="checkbox-row mb-14">
+        <input type="checkbox" id="bookable" name="bookable">
+        <label for="bookable">Shared / bookable resource</label>
       </div>
     </div>
     <div class="modal-foot">
       <button class="btn btn-ghost" data-close-modal>Cancel</button>
-      <button class="btn btn-primary" data-close-modal data-toast-demo="Asset AF-0327 registered">Register asset</button>
+      <button type="submit" class="btn btn-primary">Register asset</button>
     </div>
   </div>
 </div>
@@ -167,16 +264,34 @@
 <div class="modal-overlay" id="modal-book-resource">
   <div class="modal">
     <div class="modal-head">
-      <div><h3>Book a resource</h3><p>Overlapping requests are rejected automatically.</p></div>
+      <div>
+        <h3>Book a resource</h3>
+        <p>Overlapping requests are rejected automatically.</p></div>
       <button class="modal-close" data-close-modal>&times;</button>
     </div>
     <div class="modal-body">
-      <div class="field"><label>Resource</label><select class="select"><option>Conference Room B2</option><option>Van &middot; AF-0343</option><option>Projector &middot; AF-0335</option></select></div>
-      <div class="field-row">
-        <div class="field"><label>Date</label><input class="input" type="date"></div>
-        <div class="field"><label>Time slot</label><input class="input" type="time"></div>
+      <div class="field">
+        <label>Resource</label>
+        <select class="select">
+          <option>Conference Room B2</option>
+          <option>Van &middot; AF-0343</option>
+          <option>Projector &middot; AF-0335</option>
+        </select>
       </div>
-      <div class="field"><label>Purpose</label><input class="input" placeholder="e.g. Vendor review call"></div>
+      <div class="field-row">
+        <div class="field">
+          <label>Date</label>
+          <input class="input" type="date">
+        </div>
+        <div class="field">
+          <label>Time slot</label>
+          <input class="input" type="time">
+        </div>
+      </div>
+      <div class="field">
+        <label>Purpose</label>
+        <input class="input" placeholder="e.g. Vendor review call">
+      </div>
     </div>
     <div class="modal-foot">
       <button class="btn btn-ghost" data-close-modal>Cancel</button>
@@ -188,15 +303,34 @@
 <div class="modal-overlay" id="modal-raise-maintenance">
   <div class="modal">
     <div class="modal-head">
-      <div><h3>Raise maintenance request</h3><p>Routed for approval before repair work starts.</p></div>
+      <div>
+        <h3>Raise maintenance request</h3>
+        <p>Routed for approval before repair work starts.</p>
+      </div>
       <button class="modal-close" data-close-modal>&times;</button>
     </div>
     <div class="modal-body">
-      <div class="field"><label>Asset</label><input class="input" placeholder="Search by tag, name or serial&hellip;"></div>
-      <div class="field"><label>Describe the issue</label><textarea class="input" rows="3" placeholder="What&rsquo;s wrong with the asset?"></textarea></div>
+      <div class="field">
+        <label>Asset</label>
+        <input class="input" placeholder="Search by tag, name or serial&hellip;">
+      </div>
+      <div class="field">
+        <label>Describe the issue</label>
+        <textarea class="input" rows="3" placeholder="What&rsquo;s wrong with the asset?"></textarea>
+      </div>
       <div class="field-row">
-        <div class="field"><label>Priority</label><select class="select"><option>Low</option><option selected>Medium</option><option>High</option></select></div>
-        <div class="field"><label>Attach photo</label><input class="input" type="file"></div>
+        <div class="field">
+          <label>Priority</label>
+          <select class="select">
+            <option>Low</option>
+            <option selected>Medium</option>
+            <option>High</option>
+          </select>
+        </div>
+        <div class="field">
+          <label>Attach photo</label>
+          <input class="input" type="file">
+        </div>
       </div>
     </div>
     <div class="modal-foot">

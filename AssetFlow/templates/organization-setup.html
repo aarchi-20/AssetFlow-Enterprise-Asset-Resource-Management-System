@@ -30,7 +30,7 @@
         <a href="/maintenance" class="nav-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M14.7 6.3a4 4 0 00-5.4 5.4L3 18v3h3l6.3-6.3a4 4 0 005.4-5.4l-2.8 2.8-2-2 2.8-2.8z"/></svg><span>Maintenance</span></a>
         <a href="/audit" class="nav-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="5" y="3.5" width="14" height="17" rx="2"/><path d="M9 3v2h6V3M9 11l2 2 4-4M9 16h6"/></svg><span>Audit</span></a>
         <a href="/reports" class="nav-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 20V10M12 20V4M20 20v-7"/></svg><span>Reports</span></a>
-        <a href="/notifications" class="nav-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M18 8a6 6 0 10-12 0c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.7 21a2 2 0 01-3.4 0"/></svg><span>Notifications</span><span class="nav-badge">5</span></a>
+        <a href="/notifications" class="nav-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M18 8a6 6 0 10-12 0c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.7 21a2 2 0 01-3.4 0"/></svg><span>Notifications</span></a>
 
     <div class="sidebar-footer">
       <span class="role-pill">
@@ -39,6 +39,7 @@
       </span>
     </div>
   </aside>
+
   <div class="sidebar-scrim" data-menu-toggle-scrim></div>
   <div class="main-col">
     <header class="topbar">
@@ -88,15 +89,36 @@
             <span>Editing a department here also updates the picklist used in Assets and Allocation screens.</span>
           </div>
           <div class="card">
-            <div class="card-head"><h3>Departments</h3><button class="btn btn-primary btn-sm" data-open-modal="modal-add-dept"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg> Add department</button></div>
+            <div class="card-head">
+              <h3>Departments</h3>
+              <button class="btn btn-primary btn-sm" data-open-modal="modal-add-dept">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M12 5v14M5 12h14"/>
+                </svg> 
+                Add department
+              </button>
+            </div>
             <div class="table-wrap card-pad">
               <table class="data-table">
-                <thead><tr><th>Department</th><th>Head</th><th>Parent department</th><th>Status</th><th></th></tr></thead>
+                <thead>
+                  <tr>
+                    <th>Department</th>
+                    <th>Head</th>
+                    <th>Parent department</th>
+                    <th>Status</th>
+                    <th></th>
+                  </tr>
+                </thead>
                 <tbody>
-                  <tr><td class="row-title">Engineering</td><td>Aditi Rao</td><td class="faint">&mdash;</td><td><span class="chip chip-available"><span class="dot"></span>Active</span></td><td class="table-actions"><button class="btn btn-sm btn-ghost">Edit</button></td></tr>
-                  <tr><td class="row-title">Facilities</td><td>Rohan Mehta</td><td class="faint">&mdash;</td><td><span class="chip chip-available"><span class="dot"></span>Active</span></td><td class="table-actions"><button class="btn btn-sm btn-ghost">Edit</button></td></tr>
-                  <tr><td class="row-title">Field Ops (East)</td><td>Sana Iqbal</td><td>Field Ops</td><td><span class="chip chip-available"><span class="dot"></span>Active</span></td><td class="table-actions"><button class="btn btn-sm btn-ghost">Edit</button></td></tr>
-                  <tr><td class="row-title">Procurement</td><td>Arjun Nair</td><td class="faint">&mdash;</td><td><span class="chip chip-retired"><span class="dot"></span>Inactive</span></td><td class="table-actions"><button class="btn btn-sm btn-ghost">Edit</button></td></tr>
+                  {% for dept in departments %}
+                  <tr>
+                    <td class="row-title">{{ dept.name }}</td>
+                    <td>{{ dept.head }}</td>
+                    <td class="faint">&mdash;</td>
+                    <td><span class="chip chip-available"><span class="dot"></span>{{ dept.is_active }}</span></td>
+                    <td class="table-actions"><button class="btn btn-sm btn-ghost">Edit</button></td>
+                  </tr>
+                  {% endfor %}
                 </tbody>
               </table>
             </div>
@@ -107,25 +129,18 @@
         <div class="tab-panel" data-tab-panel="cat">
           <div class="grid grid-3">
             <div class="card card-pad reveal stagger">
-              <div class="flex items-center justify-between mb-14"><h3 style="font-size:14.5px;">Electronics</h3><span class="chip chip-neutral">48 assets</span></div>
-              <p class="muted" style="font-size:12.6px;">Optional field: warranty period (months)</p>
-              <hr class="divider">
-              <button class="btn btn-secondary btn-sm btn-block">Edit category</button>
-            </div>
-            <div class="card card-pad reveal stagger">
-              <div class="flex items-center justify-between mb-14"><h3 style="font-size:14.5px;">Furniture</h3><span class="chip chip-neutral">112 assets</span></div>
-              <p class="muted" style="font-size:12.6px;">No category-specific fields configured</p>
-              <hr class="divider">
-              <button class="btn btn-secondary btn-sm btn-block">Edit category</button>
-            </div>
-            <div class="card card-pad reveal stagger">
-              <div class="flex items-center justify-between mb-14"><h3 style="font-size:14.5px;">Vehicles</h3><span class="chip chip-neutral">9 assets</span></div>
-              <p class="muted" style="font-size:12.6px;">Optional field: registration expiry</p>
+              <div class="flex items-center justify-between mb-14">
+                <h3 style="font-size:14.5px;">{{ category.name }}</h3>
+                <span class="chip chip-neutral">{{ category.asset_count }} assets</span></div>
+              <p class="muted" style="font-size:12.6px;">{{ category.description }}</p>
               <hr class="divider">
               <button class="btn btn-secondary btn-sm btn-block">Edit category</button>
             </div>
           </div>
-          <button class="btn btn-primary mt-20" data-open-modal="modal-add-cat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg> Add category</button>
+          <button class="btn btn-primary mt-20" data-open-modal="modal-add-cat">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg> 
+            Add category
+          </button>
         </div>
 
         <!-- Tab C: Employee Directory -->
@@ -139,26 +154,23 @@
           <div class="card">
             <div class="table-wrap">
               <table class="data-table">
-                <thead><tr><th>Name</th><th>Email</th><th>Department</th><th>Role</th><th>Status</th><th></th></tr></thead>
+                <thead>
+                  <tr>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Department</th>
+                    <th>Role</th>
+                    <th>Status</th>
+                    <th></th>
+                  </tr>
+                </thead>
                 <tbody>
                   <tr>
-                    <td class="row-title">Priya Shah</td><td class="muted">priya.shah@company.com</td><td>Engineering</td>
-                    <td><span class="chip chip-neutral">Employee</span></td><td><span class="chip chip-available"><span class="dot"></span>Active</span></td>
-                    <td class="table-actions"><button class="btn btn-sm btn-ghost">Promote</button></td>
-                  </tr>
-                  <tr>
-                    <td class="row-title">Aditi Rao</td><td class="muted">aditi.rao@company.com</td><td>Engineering</td>
-                    <td><span class="chip chip-allocated">Department Head</span></td><td><span class="chip chip-available"><span class="dot"></span>Active</span></td>
-                    <td class="table-actions"><button class="btn btn-sm btn-ghost">Edit</button></td>
-                  </tr>
-                  <tr>
-                    <td class="row-title">Rohan Verma</td><td class="muted">rohan.verma@company.com</td><td>Facilities</td>
-                    <td><span class="chip chip-reserved">Asset Manager</span></td><td><span class="chip chip-available"><span class="dot"></span>Active</span></td>
-                    <td class="table-actions"><button class="btn btn-sm btn-ghost">Edit</button></td>
-                  </tr>
-                  <tr>
-                    <td class="row-title">Arjun Nair</td><td class="muted">arjun.nair@company.com</td><td>Procurement</td>
-                    <td><span class="chip chip-neutral">Employee</span></td><td><span class="chip chip-retired"><span class="dot"></span>Inactive</span></td>
+                    <td class="row-title">Priya Shah</td>
+                    <td class="muted">priya.shah@company.com</td>
+                    <td>Engineering</td>
+                    <td><span class="chip chip-neutral">Employee</span></td>
+                    <td><span class="chip chip-available"><span class="dot"></span>Active</span></td>
                     <td class="table-actions"><button class="btn btn-sm btn-ghost">Promote</button></td>
                   </tr>
                 </tbody>
@@ -177,7 +189,12 @@
 
 <div class="modal-overlay" id="modal-add-dept">
   <div class="modal">
-    <div class="modal-head"><div><h3>Add department</h3></div><button class="modal-close" data-close-modal>&times;</button></div>
+    <div class="modal-head">
+      <div>
+        <h3>Add department</h3>
+      </div>
+      <button class="modal-close" data-close-modal>&times;</button>
+    </div>
     <div class="modal-body">
       <div class="field"><label>Department name</label><input class="input" placeholder="e.g. Marketing"></div>
       <div class="field"><label>Department head</label><select class="select"><option>Select employee&hellip;</option><option>Priya Shah</option><option>Arjun Nair</option></select></div>
@@ -189,26 +206,77 @@
 </div>
 <div class="modal-overlay" id="modal-add-cat">
   <div class="modal">
-    <div class="modal-head"><div><h3>Add asset category</h3></div><button class="modal-close" data-close-modal>&times;</button></div>
-    <div class="modal-body">
-      <div class="field"><label>Category name</label><input class="input" placeholder="e.g. IT Peripherals"></div>
-      <div class="field"><label>Optional field name</label><input class="input" placeholder="e.g. Warranty period"></div>
-      <div class="field"><label>Field type</label><select class="select"><option>Text</option><option>Number</option><option>Date</option></select></div>
+    <div class="modal-head">
+      <div>
+        <h3>Add asset category</h3>
+      </div>
+      <button class="modal-close" data-close-modal>&times;</button>
     </div>
-    <div class="modal-foot"><button class="btn btn-ghost" data-close-modal>Cancel</button><button class="btn btn-primary" data-close-modal data-toast-demo="Category created">Save category</button></div>
+    <form method="post" action="{% url 'add_category' %}">
+      {% csrf_token %}
+      <div class="modal-body">
+        <div class="field">
+          <label>Category name</label>
+          <input class="input" name="name">
+        </div>
+        <div class="field">
+          <label>Optional field name</label>
+          <input class="input" name="optional_field_name">
+        </div>
+        <div class="field">
+          <label>Field type</label>
+          <select class="select">
+            <option value="Text">Text</option>
+            <option value="Number">Number</option>
+            <option value="Date">Date</option>
+          </select>
+        </div>
+      </div>
+      <div class="modal-foot">
+        <button class="btn btn-ghost" data-close-modal>Cancel</button>
+        <button type="submit" class="btn btn-primary" data-close-modal data-toast-demo="Category created">Save category</button>
+      </div>
+    </form>
+  </div>
+
+    <div class="modal-foot">
+      <button class="btn btn-ghost" data-close-modal>Cancel</button>
+      <button class="btn btn-primary" data-close-modal data-toast-demo="Category created">Save category</button>
+    </div>
   </div>
 </div>
+
 <div class="modal-overlay" id="modal-add-emp">
   <div class="modal">
-    <div class="modal-head"><div><h3>Add employee</h3><p>New records default to the Employee role.</p></div><button class="modal-close" data-close-modal>&times;</button></div>
+    <div class="modal-head">
+      <div>
+        <h3>Add employee</h3>
+        <p>New records default to the Employee role.</p>
+      </div>
+      <button class="modal-close" data-close-modal>&times;</button>
+    </div>
     <div class="modal-body">
       <div class="field-row">
-        <div class="field"><label>Full name</label><input class="input" placeholder="Jane Doe"></div>
-        <div class="field"><label>Email</label><input class="input" type="email" placeholder="jane@company.com"></div>
+        <div class="field">
+          <label>Full name</label>
+          <input class="input" placeholder="Jane Doe"></div>
+        <div class="field">
+          <label>Email</label>
+          <input class="input" type="email" placeholder="jane@company.com"></div>
       </div>
-      <div class="field"><label>Department</label><select class="select"><option>Engineering</option><option>Facilities</option><option>Field Ops</option></select></div>
+      <div class="field">
+        <label>Department</label>
+        <select class="select">
+          <option>Engineering</option>
+          <option>Facilities</option>
+          <option>Field Ops</option>
+        </select>
+      </div>
     </div>
-    <div class="modal-foot"><button class="btn btn-ghost" data-close-modal>Cancel</button><button class="btn btn-primary" data-close-modal data-toast-demo="Employee added">Add employee</button></div>
+    <div class="modal-foot">
+      <button class="btn btn-ghost" data-close-modal>Cancel</button>
+      <button class="btn btn-primary" data-close-modal data-toast-demo="Employee added">Add employee</button>
+    </div>
   </div>
 </div>
 
