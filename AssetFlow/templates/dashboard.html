@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Dashboard &middot; AssetFlow</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css" />
+
+</head>
+<body>
+<!-- DJANGO NOTE: this shell (sidebar + topbar) maps to base.html; {% block content %} starts at <main class="content"> -->
+<div class="app-shell">
+  <aside class="sidebar">
+    <div class="brand">
+      <div class="brand-mark">AF</div>
+      <div>
+        <div class="brand-name">AssetFlow</div>
+        <div class="brand-sub">ERP &middot; Asset &amp; Resource</div>
+      </div>
+    </div>
+
+    <div class="nav-section-label">Workspace</div>
+        <a href="dashboard.html" class="nav-link active"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="7" height="9" rx="1.5"/><rect x="14" y="3" width="7" height="5" rx="1.5"/><rect x="14" y="12" width="7" height="9" rx="1.5"/><rect x="3" y="16" width="7" height="5" rx="1.5"/></svg><span>Dashboard</span></a>
+        <a href="organization-setup.html" class="nav-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 21V7l8-4 8 4v14"/><path d="M9 21v-6h6v6"/><path d="M9 11h.01M15 11h.01M9 7h.01M15 7h.01"/></svg><span>Organization Setup</span></a>
+        <a href="assets.html" class="nav-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 8l-9-5-9 5 9 5 9-5z"/><path d="M3 8v8l9 5 9-5V8"/><path d="M12 13v8"/></svg><span>Assets</span></a>
+        <a href="allocation.html" class="nav-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M7 3L3 7l4 4"/><path d="M3 7h13a4 4 0 014 4v1"/><path d="M17 21l4-4-4-4"/><path d="M21 17H8a4 4 0 01-4-4v-1"/></svg><span>Allocation &amp; Transfer</span></a>
+        <a href="booking.html" class="nav-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="4.5" width="18" height="16" rx="2"/><path d="M3 9.5h18M8 3v3M16 3v3"/><path d="M8 14h2M14 14h2M8 17h2"/></svg><span>Resource Booking</span></a>
+        <a href="maintenance.html" class="nav-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M14.7 6.3a4 4 0 00-5.4 5.4L3 18v3h3l6.3-6.3a4 4 0 005.4-5.4l-2.8 2.8-2-2 2.8-2.8z"/></svg><span>Maintenance</span></a>
+        <a href="audit.html" class="nav-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="5" y="3.5" width="14" height="17" rx="2"/><path d="M9 3v2h6V3M9 11l2 2 4-4M9 16h6"/></svg><span>Audit</span></a>
+        <a href="reports.html" class="nav-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 20V10M12 20V4M20 20v-7"/></svg><span>Reports</span></a>
+        <a href="notifications.html" class="nav-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M18 8a6 6 0 10-12 0c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.7 21a2 2 0 01-3.4 0"/></svg><span>Notifications</span><span class="nav-badge">5</span></a>
+
+    <div class="sidebar-footer">
+      <span class="role-pill">
+        <svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M4 21c1.5-4.5 5-6 8-6s6.5 1.5 8 6"/></svg>
+        Asset Manager
+      </span>
+    </div>
+  </aside>
+  <div class="sidebar-scrim" data-menu-toggle-scrim></div>
+  <div class="main-col">
+    <header class="topbar">
+      <button class="menu-toggle" data-menu-toggle aria-label="Toggle menu"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+      <div class="topbar-title">
+        <h1>Dashboard</h1>
+        <span class="breadcrumb">Home / Overview</span>
+      </div>
+      <label class="search-field">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
+        <input type="text" placeholder="Search assets, tags, employees&hellip;  (press /)" />
+      </label>
+      <button class="icon-btn" aria-label="Notifications"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M18 8a6 6 0 10-12 0c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.7 21a2 2 0 01-3.4 0"/></svg><span class="dot"></span></button>
+      <div class="topbar-user">
+        <div class="avatar">RV</div>
+        <div class="topbar-user-meta">
+          <div class="name">Rohan Verma</div>
+          <div class="role">Asset Manager</div>
+        </div>
+      </div>
+    </header>
+    <main class="content">
+
+      <div class="page-head">
+        <span class="eyebrow">Today &middot; Tue, 7 Jul</span>
+        <div class="page-head-row">
+          <div>
+            <h2>Good morning, Rohan</h2>
+            <p class="desc">Here&rsquo;s the real-time snapshot of assets, bookings and requests across your organization.</p>
+          </div>
+          <div class="quick-actions">
+            <button class="btn btn-secondary" data-open-modal="modal-book-resource"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="4.5" width="18" height="16" rx="2"/><path d="M3 9.5h18M8 3v3M16 3v3"/><path d="M8 14h2M14 14h2M8 17h2"/></svg> Book resource</button>
+            <button class="btn btn-secondary" data-open-modal="modal-raise-maintenance"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M14.7 6.3a4 4 0 00-5.4 5.4L3 18v3h3l6.3-6.3a4 4 0 005.4-5.4l-2.8 2.8-2-2 2.8-2.8z"/></svg> Raise request</button>
+            <button class="btn btn-primary" data-open-modal="modal-register-asset"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg> Register asset</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="alert alert-danger reveal">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 9v4M12 17h.01"/><path d="M10.3 3.9L1.8 18a2 2 0 001.7 3h17a2 2 0 001.7-3L13.7 3.9a2 2 0 00-3.4 0z"/></svg>
+        <span><strong>3 assets overdue for return</strong> &mdash; flagged for follow-up. Owners have been notified.</span>
+        <a href="allocation.html" class="btn btn-sm btn-danger alert-action">Review</a>
+      </div>
+
+      <div class="grid grid-4 mb-14">
+        <div class="card kpi-card reveal stagger">
+          <div class="kpi-top"><span class="kpi-label">Assets Available</span><div class="kpi-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 8l-9-5-9 5 9 5 9-5z"/><path d="M3 8v8l9 5 9-5V8"/><path d="M12 13v8"/></svg></div></div>
+          <div class="kpi-value"><span data-counter="128">0</span></div>
+          <span class="kpi-trend up">&uarr; 6 this week</span>
+        </div>
+        <div class="card kpi-card reveal stagger">
+          <div class="kpi-top"><span class="kpi-label">Assets Allocated</span><div class="kpi-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M7 3L3 7l4 4"/><path d="M3 7h13a4 4 0 014 4v1"/><path d="M17 21l4-4-4-4"/><path d="M21 17H8a4 4 0 01-4-4v-1"/></svg></div></div>
+          <div class="kpi-value"><span data-counter="76">0</span></div>
+          <span class="kpi-trend flat">&rarr; steady</span>
+        </div>
+        <div class="card kpi-card reveal stagger">
+          <div class="kpi-top"><span class="kpi-label">Maintenance Today</span><div class="kpi-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M14.7 6.3a4 4 0 00-5.4 5.4L3 18v3h3l6.3-6.3a4 4 0 005.4-5.4l-2.8 2.8-2-2 2.8-2.8z"/></svg></div></div>
+          <div class="kpi-value"><span data-counter="4">0</span></div>
+          <span class="kpi-trend down">2 pending approval</span>
+        </div>
+        <div class="card kpi-card reveal stagger">
+          <div class="kpi-top"><span class="kpi-label">Active Bookings</span><div class="kpi-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="4.5" width="18" height="16" rx="2"/><path d="M3 9.5h18M8 3v3M16 3v3"/><path d="M8 14h2M14 14h2M8 17h2"/></svg></div></div>
+          <div class="kpi-value"><span data-counter="9">0</span></div>
+          <span class="kpi-trend up">3 starting soon</span>
+        </div>
+      </div>
+
+      <div class="grid grid-4 mb-14">
+        <div class="card kpi-card reveal stagger">
+          <div class="kpi-top"><span class="kpi-label">Upcoming Returns</span><div class="kpi-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 20V10M12 20V4M20 20v-7"/></svg></div></div>
+          <div class="kpi-value"><span data-counter="12">0</span></div>
+          <span class="kpi-trend flat">next 7 days</span>
+        </div>
+        <div class="card kpi-card reveal stagger">
+          <div class="kpi-top"><span class="kpi-label">Pending Transfers</span><div class="kpi-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M7 3L3 7l4 4"/><path d="M3 7h13a4 4 0 014 4v1"/><path d="M17 21l4-4-4-4"/><path d="M21 17H8a4 4 0 01-4-4v-1"/></svg></div></div>
+          <div class="kpi-value"><span data-counter="3">0</span></div>
+          <span class="kpi-trend down">awaiting approval</span>
+        </div>
+        <div class="card kpi-card reveal stagger">
+          <div class="kpi-top"><span class="kpi-label">Audit Discrepancies</span><div class="kpi-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="5" y="3.5" width="14" height="17" rx="2"/><path d="M9 3v2h6V3M9 11l2 2 4-4M9 16h6"/></svg></div></div>
+          <div class="kpi-value"><span data-counter="2">0</span></div>
+          <span class="kpi-trend down">Engineering cycle</span>
+        </div>
+        <div class="card kpi-card reveal stagger">
+          <div class="kpi-top"><span class="kpi-label">Overdue Returns</span><div class="kpi-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M18 8a6 6 0 10-12 0c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.7 21a2 2 0 01-3.4 0"/></svg></div></div>
+          <div class="kpi-value"><span data-counter="3">0</span></div>
+          <span class="kpi-trend down">needs follow-up</span>
+        </div>
+      </div>
+
+      <div class="grid grid-3">
+        <div class="card grid-span-2 reveal">
+          <div class="card-head"><h3>Recent activity</h3><a href="notifications.html" class="hint">View all &rarr;</a></div>
+          <div class="card-pad" style="padding-top:10px;">
+            <ul class="notif-list">
+              <li class="notif-item">
+                <div class="notif-icon i-approve"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M7 3L3 7l4 4"/><path d="M3 7h13a4 4 0 014 4v1"/><path d="M17 21l4-4-4-4"/><path d="M21 17H8a4 4 0 01-4-4v-1"/></svg></div>
+                <div class="notif-body">
+                  <p class="n-text"><span class="tag-code">AF-0114</span> Laptop allocated to <strong>Priya Shah</strong> &middot; IT Dept</p>
+                  <p class="n-time">2m ago</p>
+                </div>
+              </li>
+              <li class="notif-item">
+                <div class="notif-icon i-booking"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="4.5" width="18" height="16" rx="2"/><path d="M3 9.5h18M8 3v3M16 3v3"/><path d="M8 14h2M14 14h2M8 17h2"/></svg></div>
+                <div class="notif-body">
+                  <p class="n-text">Room <span class="tag-code">B2</span> booking confirmed &middot; 2:00&ndash;3:00 PM</p>
+                  <p class="n-time">18m ago</p>
+                </div>
+              </li>
+              <li class="notif-item">
+                <div class="notif-icon i-info"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M14.7 6.3a4 4 0 00-5.4 5.4L3 18v3h3l6.3-6.3a4 4 0 005.4-5.4l-2.8 2.8-2-2 2.8-2.8z"/></svg></div>
+                <div class="notif-body">
+                  <p class="n-text">Projector <span class="tag-code">AF-0062</span> maintenance resolved</p>
+                  <p class="n-time">1h ago</p>
+                </div>
+              </li>
+              <li class="notif-item">
+                <div class="notif-icon i-alert"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M18 8a6 6 0 10-12 0c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.7 21a2 2 0 01-3.4 0"/></svg></div>
+                <div class="notif-body">
+                  <p class="n-text">Overdue return: <span class="tag-code">AF-0021</span> was due 3 days ago</p>
+                  <p class="n-time">2d ago</p>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="card reveal">
+          <div class="card-head"><h3>Quick actions</h3></div>
+          <div class="card-pad" style="display:flex;flex-direction:column;gap:10px;padding-top:14px;">
+            <button class="btn btn-secondary btn-block" style="justify-content:flex-start;" data-open-modal="modal-register-asset"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg> Register Asset</button>
+            <button class="btn btn-secondary btn-block" style="justify-content:flex-start;" data-open-modal="modal-book-resource"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="4.5" width="18" height="16" rx="2"/><path d="M3 9.5h18M8 3v3M16 3v3"/><path d="M8 14h2M14 14h2M8 17h2"/></svg> Book Resource</button>
+            <button class="btn btn-secondary btn-block" style="justify-content:flex-start;" data-open-modal="modal-raise-maintenance"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M14.7 6.3a4 4 0 00-5.4 5.4L3 18v3h3l6.3-6.3a4 4 0 005.4-5.4l-2.8 2.8-2-2 2.8-2.8z"/></svg> Raise Maintenance Request</button>
+            <hr class="divider" style="margin:6px 0;">
+            <p class="section-title" style="font-size:12.5px;">Lifecycle legend</p>
+            <div style="display:flex;flex-wrap:wrap;gap:8px;">
+              <span class="chip chip-available"><span class="dot"></span>Available</span>
+              <span class="chip chip-allocated"><span class="dot"></span>Allocated</span>
+              <span class="chip chip-reserved"><span class="dot"></span>Reserved</span>
+              <span class="chip chip-maintenance"><span class="dot"></span>Maintenance</span>
+              <span class="chip chip-lost"><span class="dot"></span>Lost</span>
+              <span class="chip chip-retired"><span class="dot"></span>Retired</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </main>
+  </div>
+</div>
+
+<div class="toast-stack"></div>
+
+<div class="modal-overlay" id="modal-register-asset">
+  <div class="modal">
+    <div class="modal-head">
+      <div><h3>Register asset</h3><p>New assets enter the system as <strong>Available</strong>.</p></div>
+      <button class="modal-close" data-close-modal>&times;</button>
+    </div>
+    <div class="modal-body">
+      <div class="field-row">
+        <div class="field"><label>Asset name</label><input class="input" placeholder="e.g. Dell Latitude 5420"></div>
+        <div class="field"><label>Category</label><select class="select"><option>Electronics</option><option>Furniture</option><option>Vehicles</option></select></div>
+      </div>
+      <div class="field-row">
+        <div class="field"><label>Asset tag</label><input class="input mono" value="AF-0327" disabled></div>
+        <div class="field"><label>Serial number</label><input class="input" placeholder="SN-2201938"></div>
+      </div>
+      <div class="field-row">
+        <div class="field"><label>Acquisition date</label><input class="input" type="date"></div>
+        <div class="field"><label>Acquisition cost</label><input class="input" placeholder="For reports only"></div>
+      </div>
+      <div class="field-row">
+        <div class="field"><label>Condition</label><select class="select"><option>New</option><option>Good</option><option>Fair</option></select></div>
+        <div class="field"><label>Location</label><input class="input" placeholder="HQ Floor 2"></div>
+      </div>
+      <div class="checkbox-row mb-14"><input type="checkbox" id="bookable"><label for="bookable">Shared / bookable resource</label></div>
+      <div class="field">
+        <label>Photo / documents</label>
+        <div class="upload-drop">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 16V4M7 9l5-5 5 5"/><path d="M4 16v3a2 2 0 002 2h12a2 2 0 002-2v-3"/></svg>
+          Drag a file here or click to upload
+        </div>
+      </div>
+    </div>
+    <div class="modal-foot">
+      <button class="btn btn-ghost" data-close-modal>Cancel</button>
+      <button class="btn btn-primary" data-close-modal data-toast-demo="Asset AF-0327 registered">Register asset</button>
+    </div>
+  </div>
+</div>
+
+<div class="modal-overlay" id="modal-book-resource">
+  <div class="modal">
+    <div class="modal-head">
+      <div><h3>Book a resource</h3><p>Overlapping requests are rejected automatically.</p></div>
+      <button class="modal-close" data-close-modal>&times;</button>
+    </div>
+    <div class="modal-body">
+      <div class="field"><label>Resource</label><select class="select"><option>Conference Room B2</option><option>Van &middot; AF-0343</option><option>Projector &middot; AF-0335</option></select></div>
+      <div class="field-row">
+        <div class="field"><label>Date</label><input class="input" type="date"></div>
+        <div class="field"><label>Time slot</label><input class="input" type="time"></div>
+      </div>
+      <div class="field"><label>Purpose</label><input class="input" placeholder="e.g. Vendor review call"></div>
+    </div>
+    <div class="modal-foot">
+      <button class="btn btn-ghost" data-close-modal>Cancel</button>
+      <button class="btn btn-primary" data-close-modal data-toast-demo="Booking request sent">Check availability</button>
+    </div>
+  </div>
+</div>
+
+<div class="modal-overlay" id="modal-raise-maintenance">
+  <div class="modal">
+    <div class="modal-head">
+      <div><h3>Raise maintenance request</h3><p>Routed for approval before repair work starts.</p></div>
+      <button class="modal-close" data-close-modal>&times;</button>
+    </div>
+    <div class="modal-body">
+      <div class="field"><label>Asset</label><input class="input" placeholder="Search by tag, name or serial&hellip;"></div>
+      <div class="field"><label>Describe the issue</label><textarea class="input" rows="3" placeholder="What&rsquo;s wrong with the asset?"></textarea></div>
+      <div class="field-row">
+        <div class="field"><label>Priority</label><select class="select"><option>Low</option><option selected>Medium</option><option>High</option></select></div>
+        <div class="field"><label>Attach photo</label><input class="input" type="file"></div>
+      </div>
+    </div>
+    <div class="modal-foot">
+      <button class="btn btn-ghost" data-close-modal>Cancel</button>
+      <button class="btn btn-primary" data-close-modal data-toast-demo="Maintenance request submitted">Submit request</button>
+    </div>
+  </div>
+</div>
+
+<script src="js/script.js"></script>
+</body>
+</html>

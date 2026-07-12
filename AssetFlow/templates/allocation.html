@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Allocation &amp; Transfer &middot; AssetFlow</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css" />
+
+</head>
+<body>
+<!-- DJANGO NOTE: this shell (sidebar + topbar) maps to base.html; {% block content %} starts at <main class="content"> -->
+<div class="app-shell">
+  <aside class="sidebar">
+    <div class="brand">
+      <div class="brand-mark">AF</div>
+      <div>
+        <div class="brand-name">AssetFlow</div>
+        <div class="brand-sub">ERP &middot; Asset &amp; Resource</div>
+      </div>
+    </div>
+
+    <div class="nav-section-label">Workspace</div>
+        <a href="dashboard.html" class="nav-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="7" height="9" rx="1.5"/><rect x="14" y="3" width="7" height="5" rx="1.5"/><rect x="14" y="12" width="7" height="9" rx="1.5"/><rect x="3" y="16" width="7" height="5" rx="1.5"/></svg><span>Dashboard</span></a>
+        <a href="organization-setup.html" class="nav-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 21V7l8-4 8 4v14"/><path d="M9 21v-6h6v6"/><path d="M9 11h.01M15 11h.01M9 7h.01M15 7h.01"/></svg><span>Organization Setup</span></a>
+        <a href="assets.html" class="nav-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 8l-9-5-9 5 9 5 9-5z"/><path d="M3 8v8l9 5 9-5V8"/><path d="M12 13v8"/></svg><span>Assets</span></a>
+        <a href="allocation.html" class="nav-link active"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M7 3L3 7l4 4"/><path d="M3 7h13a4 4 0 014 4v1"/><path d="M17 21l4-4-4-4"/><path d="M21 17H8a4 4 0 01-4-4v-1"/></svg><span>Allocation &amp; Transfer</span></a>
+        <a href="booking.html" class="nav-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="4.5" width="18" height="16" rx="2"/><path d="M3 9.5h18M8 3v3M16 3v3"/><path d="M8 14h2M14 14h2M8 17h2"/></svg><span>Resource Booking</span></a>
+        <a href="maintenance.html" class="nav-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M14.7 6.3a4 4 0 00-5.4 5.4L3 18v3h3l6.3-6.3a4 4 0 005.4-5.4l-2.8 2.8-2-2 2.8-2.8z"/></svg><span>Maintenance</span></a>
+        <a href="audit.html" class="nav-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="5" y="3.5" width="14" height="17" rx="2"/><path d="M9 3v2h6V3M9 11l2 2 4-4M9 16h6"/></svg><span>Audit</span></a>
+        <a href="reports.html" class="nav-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 20V10M12 20V4M20 20v-7"/></svg><span>Reports</span></a>
+        <a href="notifications.html" class="nav-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M18 8a6 6 0 10-12 0c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.7 21a2 2 0 01-3.4 0"/></svg><span>Notifications</span><span class="nav-badge">5</span></a>
+
+    <div class="sidebar-footer">
+      <span class="role-pill">
+        <svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M4 21c1.5-4.5 5-6 8-6s6.5 1.5 8 6"/></svg>
+        Asset Manager
+      </span>
+    </div>
+  </aside>
+  <div class="sidebar-scrim" data-menu-toggle-scrim></div>
+  <div class="main-col">
+    <header class="topbar">
+      <button class="menu-toggle" data-menu-toggle aria-label="Toggle menu"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+      <div class="topbar-title">
+        <h1>Allocation &amp; Transfer</h1>
+        <span class="breadcrumb">Assets / Allocation</span>
+      </div>
+      <label class="search-field">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
+        <input type="text" placeholder="Search assets, tags, employees&hellip;  (press /)" />
+      </label>
+      <button class="icon-btn" aria-label="Notifications"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M18 8a6 6 0 10-12 0c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.7 21a2 2 0 01-3.4 0"/></svg><span class="dot"></span></button>
+      <div class="topbar-user">
+        <div class="avatar">RV</div>
+        <div class="topbar-user-meta">
+          <div class="name">Rohan Verma</div>
+          <div class="role">Asset Manager</div>
+        </div>
+      </div>
+    </header>
+    <main class="content">
+
+      <div class="page-head">
+        <span class="eyebrow">Conflict-aware allocation</span>
+        <div class="page-head-row">
+          <div>
+            <h2>Allocation &amp; transfer</h2>
+            <p class="desc">Manage who holds what. AssetFlow blocks double-allocation and routes re-assignment through a transfer request instead.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="grid grid-3">
+        <div class="card grid-span-2 card-pad reveal">
+          <div class="flex items-center justify-between mb-14">
+            <div class="flex items-center gap-10"><span class="tag-code" style="font-size:14px;">AF-0114</span><strong>Dell Laptop</strong></div>
+            <span class="chip chip-allocated"><span class="dot"></span>Allocated</span>
+          </div>
+
+          <div class="conflict-block">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 9v4M12 17h.01"/><circle cx="12" cy="12" r="9"/></svg>
+            <div>
+              <h4>Already allocated to Priya Shah &middot; Engineering</h4>
+              <p>Direct re-allocation is blocked. Submit a transfer request below and it will route to the Asset Manager or Department Head for approval.</p>
+            </div>
+          </div>
+
+          <p class="section-title">Transfer request</p>
+          <div class="field-row">
+            <div class="field"><label>From</label><input class="input" value="Priya Shah &middot; Engineering" disabled></div>
+            <div class="field"><label>To</label><select class="select"><option>Select employee&hellip;</option><option>Raj Malhotra &middot; Engineering</option><option>Sana Iqbal &middot; Field Ops</option></select></div>
+          </div>
+          <div class="field"><label>Reason for transfer</label><textarea class="input" rows="2" placeholder="e.g. Priya is offboarding from the project"></textarea></div>
+          <button class="btn btn-primary" data-toast-demo="Transfer request submitted for approval"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M7 3L3 7l4 4"/><path d="M3 7h13a4 4 0 014 4v1"/><path d="M17 21l4-4-4-4"/><path d="M21 17H8a4 4 0 01-4-4v-1"/></svg> Submit request</button>
+
+          <hr class="divider">
+          <p class="section-title"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 20V10M12 20V4M20 20v-7"/></svg> Allocation history</p>
+          <div class="timeline">
+            <div class="timeline-item"><div class="t-date">Mar 12, 2026</div><div class="t-desc">Allocated to Priya Shah &middot; Engineering</div></div>
+            <div class="timeline-item"><div class="t-date">Jan 04, 2026</div><div class="t-desc">Returned by Arjun Nair &middot; condition: good</div></div>
+          </div>
+        </div>
+
+        <div class="card card-pad reveal">
+          <p class="section-title">New allocation</p>
+          <div class="field"><label>Asset</label><input class="input" placeholder="Search by tag or name&hellip;"></div>
+          <div class="field"><label>Allocate to</label><select class="select"><option>Employee</option><option>Department</option></select></div>
+          <div class="field"><label>Recipient</label><select class="select"><option>Select&hellip;</option><option>Priya Shah</option><option>Engineering Dept</option></select></div>
+          <div class="field"><label>Expected return date <span class="faint">(optional)</span></label><input class="input" type="date"></div>
+          <button class="btn btn-primary btn-block" data-toast-demo="Asset allocated successfully">Allocate asset</button>
+          <hr class="divider">
+          <p class="section-title" style="font-size:12.8px;">Return an asset</p>
+          <div class="field"><label>Asset</label><input class="input" placeholder="e.g. AF-0201"></div>
+          <div class="field"><label>Condition check-in notes</label><textarea class="input" rows="2" placeholder="Condition at return"></textarea></div>
+          <button class="btn btn-secondary btn-block" data-toast-demo="Marked as returned &middot; status set to Available">Mark returned</button>
+        </div>
+      </div>
+
+      <div class="card mt-20">
+        <div class="card-head"><h3>Overdue allocations</h3><span class="hint">Auto-flagged past Expected Return Date</span></div>
+        <div class="table-wrap card-pad">
+          <table class="data-table">
+            <thead><tr><th>Asset</th><th>Held by</th><th>Department</th><th>Expected return</th><th>Days overdue</th><th></th></tr></thead>
+            <tbody>
+              <tr>
+                <td><span class="tag-code">AF-0021</span></td><td>Neha Kapoor</td><td>Marketing</td><td>Jul 4, 2026</td>
+                <td><span class="chip chip-lost"><span class="dot"></span>3 days</span></td>
+                <td class="table-actions"><button class="btn btn-sm btn-secondary">Send reminder</button></td>
+              </tr>
+              <tr>
+                <td><span class="tag-code">AF-0033</span></td><td>Facilities Dept</td><td>Facilities</td><td>Jul 6, 2026</td>
+                <td><span class="chip chip-maintenance"><span class="dot"></span>1 day</span></td>
+                <td class="table-actions"><button class="btn btn-sm btn-secondary">Send reminder</button></td>
+              </tr>
+              <tr>
+                <td><span class="tag-code">AF-0087</span></td><td>Vikram Singh</td><td>Field Ops</td><td>Jun 29, 2026</td>
+                <td><span class="chip chip-lost"><span class="dot"></span>9 days</span></td>
+                <td class="table-actions"><button class="btn btn-sm btn-secondary">Send reminder</button></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+    </main>
+  </div>
+</div>
+
+<div class="toast-stack"></div>
+
+<script src="js/script.js"></script>
+</body>
+</html>

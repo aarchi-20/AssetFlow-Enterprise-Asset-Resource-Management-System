@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Reports &amp; Analytics &middot; AssetFlow</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css" />
+
+</head>
+<body>
+<!-- DJANGO NOTE: this shell (sidebar + topbar) maps to base.html; {% block content %} starts at <main class="content"> -->
+<div class="app-shell">
+  <aside class="sidebar">
+    <div class="brand">
+      <div class="brand-mark">AF</div>
+      <div>
+        <div class="brand-name">AssetFlow</div>
+        <div class="brand-sub">ERP &middot; Asset &amp; Resource</div>
+      </div>
+    </div>
+
+    <div class="nav-section-label">Workspace</div>
+        <a href="dashboard.html" class="nav-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="7" height="9" rx="1.5"/><rect x="14" y="3" width="7" height="5" rx="1.5"/><rect x="14" y="12" width="7" height="9" rx="1.5"/><rect x="3" y="16" width="7" height="5" rx="1.5"/></svg><span>Dashboard</span></a>
+        <a href="organization-setup.html" class="nav-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 21V7l8-4 8 4v14"/><path d="M9 21v-6h6v6"/><path d="M9 11h.01M15 11h.01M9 7h.01M15 7h.01"/></svg><span>Organization Setup</span></a>
+        <a href="assets.html" class="nav-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 8l-9-5-9 5 9 5 9-5z"/><path d="M3 8v8l9 5 9-5V8"/><path d="M12 13v8"/></svg><span>Assets</span></a>
+        <a href="allocation.html" class="nav-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M7 3L3 7l4 4"/><path d="M3 7h13a4 4 0 014 4v1"/><path d="M17 21l4-4-4-4"/><path d="M21 17H8a4 4 0 01-4-4v-1"/></svg><span>Allocation &amp; Transfer</span></a>
+        <a href="booking.html" class="nav-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="4.5" width="18" height="16" rx="2"/><path d="M3 9.5h18M8 3v3M16 3v3"/><path d="M8 14h2M14 14h2M8 17h2"/></svg><span>Resource Booking</span></a>
+        <a href="maintenance.html" class="nav-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M14.7 6.3a4 4 0 00-5.4 5.4L3 18v3h3l6.3-6.3a4 4 0 005.4-5.4l-2.8 2.8-2-2 2.8-2.8z"/></svg><span>Maintenance</span></a>
+        <a href="audit.html" class="nav-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="5" y="3.5" width="14" height="17" rx="2"/><path d="M9 3v2h6V3M9 11l2 2 4-4M9 16h6"/></svg><span>Audit</span></a>
+        <a href="reports.html" class="nav-link active"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 20V10M12 20V4M20 20v-7"/></svg><span>Reports</span></a>
+        <a href="notifications.html" class="nav-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M18 8a6 6 0 10-12 0c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.7 21a2 2 0 01-3.4 0"/></svg><span>Notifications</span><span class="nav-badge">5</span></a>
+
+    <div class="sidebar-footer">
+      <span class="role-pill">
+        <svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M4 21c1.5-4.5 5-6 8-6s6.5 1.5 8 6"/></svg>
+        Asset Manager
+      </span>
+    </div>
+  </aside>
+  <div class="sidebar-scrim" data-menu-toggle-scrim></div>
+  <div class="main-col">
+    <header class="topbar">
+      <button class="menu-toggle" data-menu-toggle aria-label="Toggle menu"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+      <div class="topbar-title">
+        <h1>Reports &amp; Analytics</h1>
+        <span class="breadcrumb">Insights</span>
+      </div>
+      <label class="search-field">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
+        <input type="text" placeholder="Search assets, tags, employees&hellip;  (press /)" />
+      </label>
+      <button class="icon-btn" aria-label="Notifications"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M18 8a6 6 0 10-12 0c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.7 21a2 2 0 01-3.4 0"/></svg><span class="dot"></span></button>
+      <div class="topbar-user">
+        <div class="avatar">RV</div>
+        <div class="topbar-user-meta">
+          <div class="name">Rohan Verma</div>
+          <div class="role">Asset Manager</div>
+        </div>
+      </div>
+    </header>
+    <main class="content">
+
+      <div class="page-head">
+        <span class="eyebrow">Q2 2026 snapshot</span>
+        <div class="page-head-row">
+          <div>
+            <h2>Reports &amp; analytics</h2>
+            <p class="desc">Operational insight across utilization, maintenance frequency, and resource demand.</p>
+          </div>
+          <button class="btn btn-primary"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 20V10M12 20V4M20 20v-7"/></svg> Export report</button>
+        </div>
+      </div>
+
+      <div class="grid grid-2">
+        <div class="card reveal">
+          <div class="card-head"><h3>Utilization by department</h3><span class="hint">% of assets in active use</span></div>
+          <div class="card-pad"><div class="bar-chart"><div class="bar-col"><div class="bar" style="--h:82%;"></div><span class="bar-label">Engi</span></div><div class="bar-col"><div class="bar" style="--h:64%;"></div><span class="bar-label">Faci</span></div><div class="bar-col"><div class="bar" style="--h:58%;"></div><span class="bar-label">Fiel</span></div><div class="bar-col"><div class="bar" style="--h:41%;"></div><span class="bar-label">Proc</span></div><div class="bar-col"><div class="bar" style="--h:35%;"></div><span class="bar-label">Mark</span></div></div></div>
+        </div>
+        <div class="card reveal">
+          <div class="card-head"><h3>Maintenance frequency</h3><span class="hint">By category, last 90 days</span></div>
+          <div class="card-pad"><div class="hbar-row"><span class="hbar-label">Electronics</span><div class="hbar-track"><div class="hbar-fill" data-width="90%"></div></div><span class="hbar-val">90%</span></div><div class="hbar-row"><span class="hbar-label">Vehicles</span><div class="hbar-track"><div class="hbar-fill" data-width="55%"></div></div><span class="hbar-val">55%</span></div><div class="hbar-row"><span class="hbar-label">Furniture</span><div class="hbar-track"><div class="hbar-fill" data-width="20%"></div></div><span class="hbar-val">20%</span></div></div>
+        </div>
+      </div>
+
+      <div class="grid grid-3 mt-20">
+        <div class="card card-pad reveal stagger">
+          <p class="section-title"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 20V10M12 20V4M20 20v-7"/></svg> Most-used assets</p>
+          <ul class="mini-list">
+            <li><span class="m-name">Room B2</span><span class="m-val">34 bookings</span></li>
+            <li><span class="m-name">Van <span class="tag-code">AF-0343</span></span><span class="m-val">21 trips</span></li>
+            <li><span class="m-name">Projector <span class="tag-code">AF-0335</span></span><span class="m-val">18 uses</span></li>
+          </ul>
+        </div>
+        <div class="card card-pad reveal stagger">
+          <p class="section-title"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 8l-9-5-9 5 9 5 9-5z"/><path d="M3 8v8l9 5 9-5V8"/><path d="M12 13v8"/></svg> Idle assets</p>
+          <ul class="mini-list">
+            <li><span class="m-name">Camera <span class="tag-code">AF-0301</span></span><span class="m-val faint">60+ days</span></li>
+            <li><span class="m-name">Chair <span class="tag-code">AF-0410</span></span><span class="m-val faint">45 days</span></li>
+          </ul>
+        </div>
+        <div class="card card-pad reveal stagger">
+          <p class="section-title"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M14.7 6.3a4 4 0 00-5.4 5.4L3 18v3h3l6.3-6.3a4 4 0 005.4-5.4l-2.8 2.8-2-2 2.8-2.8z"/></svg> Due / nearing retirement</p>
+          <ul class="mini-list">
+            <li><span class="m-name">Forklift <span class="tag-code">AF-0087</span></span><span class="m-val">due in 5 days</span></li>
+            <li><span class="m-name">Laptop <span class="tag-code">AF-0020</span></span><span class="m-val faint">4 yrs old</span></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="card mt-20 reveal">
+        <div class="card-head"><h3>Resource booking heatmap</h3><span class="hint">Peak usage windows, this week</span></div>
+        <div class="card-pad">
+          <div class="heatmap" id="heatmap"></div>
+          <div class="flex items-center gap-8 mt-14" style="font-size:11px;color:var(--ink-faint);">
+            <span>Low</span>
+            <span style="width:14px;height:14px;border-radius:4px;background:var(--accent-soft);display:inline-block;"></span>
+            <span style="width:14px;height:14px;border-radius:4px;background:#8fbdb9;display:inline-block;"></span>
+            <span style="width:14px;height:14px;border-radius:4px;background:var(--accent);display:inline-block;"></span>
+            <span>High</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="card mt-20 card-pad">
+        <p class="section-title"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 21V7l8-4 8 4v14"/><path d="M9 21v-6h6v6"/><path d="M9 11h.01M15 11h.01M9 7h.01M15 7h.01"/></svg> Department-wise allocation summary</p>
+        <div class="table-wrap">
+          <table class="data-table">
+            <thead><tr><th>Department</th><th>Assets allocated</th><th>Pending returns</th><th>Utilization</th></tr></thead>
+            <tbody>
+              <tr><td class="row-title">Engineering</td><td>34</td><td>2</td><td>82%</td></tr>
+              <tr><td class="row-title">Facilities</td><td>21</td><td>0</td><td>64%</td></tr>
+              <tr><td class="row-title">Field Ops</td><td>15</td><td>1</td><td>58%</td></tr>
+              <tr><td class="row-title">Procurement</td><td>6</td><td>0</td><td>41%</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <script>
+        // Heatmap cells — presentation only, generated client-side for variety
+        (function(){
+          var grid = document.getElementById('heatmap');
+          if(!grid) return;
+          var vals = [2,3,5,7,8,6,3,1,2,4,6,5, 3,4,6,8,9,7,4,2,3,5,7,6, 4,5,7,9,9,8,5,3,4,6,8,7];
+          vals.forEach(function(v){
+            var cell = document.createElement('div');
+            cell.className = 'cell';
+            var alpha = 0.15 + (v/9)*0.75;
+            cell.style.background = 'rgba(44,110,106,' + alpha.toFixed(2) + ')';
+            grid.appendChild(cell);
+          });
+        })();
+      </script>
+
+    </main>
+  </div>
+</div>
+
+<div class="toast-stack"></div>
+
+<script src="js/script.js"></script>
+</body>
+</html>

@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Organization Setup &middot; AssetFlow</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css" />
+
+</head>
+<body>
+<!-- DJANGO NOTE: this shell (sidebar + topbar) maps to base.html; {% block content %} starts at <main class="content"> -->
+<div class="app-shell">
+  <aside class="sidebar">
+    <div class="brand">
+      <div class="brand-mark">AF</div>
+      <div>
+        <div class="brand-name">AssetFlow</div>
+        <div class="brand-sub">ERP &middot; Asset &amp; Resource</div>
+      </div>
+    </div>
+
+    <div class="nav-section-label">Workspace</div>
+        <a href="dashboard.html" class="nav-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="7" height="9" rx="1.5"/><rect x="14" y="3" width="7" height="5" rx="1.5"/><rect x="14" y="12" width="7" height="9" rx="1.5"/><rect x="3" y="16" width="7" height="5" rx="1.5"/></svg><span>Dashboard</span></a>
+        <a href="organization-setup.html" class="nav-link active"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 21V7l8-4 8 4v14"/><path d="M9 21v-6h6v6"/><path d="M9 11h.01M15 11h.01M9 7h.01M15 7h.01"/></svg><span>Organization Setup</span></a>
+        <a href="assets.html" class="nav-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 8l-9-5-9 5 9 5 9-5z"/><path d="M3 8v8l9 5 9-5V8"/><path d="M12 13v8"/></svg><span>Assets</span></a>
+        <a href="allocation.html" class="nav-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M7 3L3 7l4 4"/><path d="M3 7h13a4 4 0 014 4v1"/><path d="M17 21l4-4-4-4"/><path d="M21 17H8a4 4 0 01-4-4v-1"/></svg><span>Allocation &amp; Transfer</span></a>
+        <a href="booking.html" class="nav-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="4.5" width="18" height="16" rx="2"/><path d="M3 9.5h18M8 3v3M16 3v3"/><path d="M8 14h2M14 14h2M8 17h2"/></svg><span>Resource Booking</span></a>
+        <a href="maintenance.html" class="nav-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M14.7 6.3a4 4 0 00-5.4 5.4L3 18v3h3l6.3-6.3a4 4 0 005.4-5.4l-2.8 2.8-2-2 2.8-2.8z"/></svg><span>Maintenance</span></a>
+        <a href="audit.html" class="nav-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="5" y="3.5" width="14" height="17" rx="2"/><path d="M9 3v2h6V3M9 11l2 2 4-4M9 16h6"/></svg><span>Audit</span></a>
+        <a href="reports.html" class="nav-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 20V10M12 20V4M20 20v-7"/></svg><span>Reports</span></a>
+        <a href="notifications.html" class="nav-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M18 8a6 6 0 10-12 0c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.7 21a2 2 0 01-3.4 0"/></svg><span>Notifications</span><span class="nav-badge">5</span></a>
+
+    <div class="sidebar-footer">
+      <span class="role-pill">
+        <svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M4 21c1.5-4.5 5-6 8-6s6.5 1.5 8 6"/></svg>
+        Asset Manager
+      </span>
+    </div>
+  </aside>
+  <div class="sidebar-scrim" data-menu-toggle-scrim></div>
+  <div class="main-col">
+    <header class="topbar">
+      <button class="menu-toggle" data-menu-toggle aria-label="Toggle menu"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+      <div class="topbar-title">
+        <h1>Organization Setup</h1>
+        <span class="breadcrumb">Admin / Master data</span>
+      </div>
+      <label class="search-field">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
+        <input type="text" placeholder="Search assets, tags, employees&hellip;  (press /)" />
+      </label>
+      <button class="icon-btn" aria-label="Notifications"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M18 8a6 6 0 10-12 0c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.7 21a2 2 0 01-3.4 0"/></svg><span class="dot"></span></button>
+      <div class="topbar-user">
+        <div class="avatar">RV</div>
+        <div class="topbar-user-meta">
+          <div class="name">Rohan Verma</div>
+          <div class="role">Asset Manager</div>
+        </div>
+      </div>
+    </header>
+    <main class="content">
+
+      <div class="page-head">
+        <span class="eyebrow">Admin only</span>
+        <div class="page-head-row">
+          <div>
+            <h2>Organization setup</h2>
+            <p class="desc">Maintain the master data everything else depends on &mdash; departments, categories and the employee directory.</p>
+          </div>
+        </div>
+      </div>
+
+      <div data-tabs="#org-panels">
+        <div class="tabs">
+          <button class="tab-btn active" data-tab-btn="dept">Department Management</button>
+          <button class="tab-btn" data-tab-btn="cat">Asset Category Management</button>
+          <button class="tab-btn" data-tab-btn="emp">Employee Directory</button>
+        </div>
+      </div>
+
+      <div id="org-panels">
+        <!-- Tab A: Departments -->
+        <div class="tab-panel active" data-tab-panel="dept">
+          <div class="alert alert-info">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 21V7l8-4 8 4v14"/><path d="M9 21v-6h6v6"/><path d="M9 11h.01M15 11h.01M9 7h.01M15 7h.01"/></svg>
+            <span>Editing a department here also updates the picklist used in Assets and Allocation screens.</span>
+          </div>
+          <div class="card">
+            <div class="card-head"><h3>Departments</h3><button class="btn btn-primary btn-sm" data-open-modal="modal-add-dept"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg> Add department</button></div>
+            <div class="table-wrap card-pad">
+              <table class="data-table">
+                <thead><tr><th>Department</th><th>Head</th><th>Parent department</th><th>Status</th><th></th></tr></thead>
+                <tbody>
+                  <tr><td class="row-title">Engineering</td><td>Aditi Rao</td><td class="faint">&mdash;</td><td><span class="chip chip-available"><span class="dot"></span>Active</span></td><td class="table-actions"><button class="btn btn-sm btn-ghost">Edit</button></td></tr>
+                  <tr><td class="row-title">Facilities</td><td>Rohan Mehta</td><td class="faint">&mdash;</td><td><span class="chip chip-available"><span class="dot"></span>Active</span></td><td class="table-actions"><button class="btn btn-sm btn-ghost">Edit</button></td></tr>
+                  <tr><td class="row-title">Field Ops (East)</td><td>Sana Iqbal</td><td>Field Ops</td><td><span class="chip chip-available"><span class="dot"></span>Active</span></td><td class="table-actions"><button class="btn btn-sm btn-ghost">Edit</button></td></tr>
+                  <tr><td class="row-title">Procurement</td><td>Arjun Nair</td><td class="faint">&mdash;</td><td><span class="chip chip-retired"><span class="dot"></span>Inactive</span></td><td class="table-actions"><button class="btn btn-sm btn-ghost">Edit</button></td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tab B: Categories -->
+        <div class="tab-panel" data-tab-panel="cat">
+          <div class="grid grid-3">
+            <div class="card card-pad reveal stagger">
+              <div class="flex items-center justify-between mb-14"><h3 style="font-size:14.5px;">Electronics</h3><span class="chip chip-neutral">48 assets</span></div>
+              <p class="muted" style="font-size:12.6px;">Optional field: warranty period (months)</p>
+              <hr class="divider">
+              <button class="btn btn-secondary btn-sm btn-block">Edit category</button>
+            </div>
+            <div class="card card-pad reveal stagger">
+              <div class="flex items-center justify-between mb-14"><h3 style="font-size:14.5px;">Furniture</h3><span class="chip chip-neutral">112 assets</span></div>
+              <p class="muted" style="font-size:12.6px;">No category-specific fields configured</p>
+              <hr class="divider">
+              <button class="btn btn-secondary btn-sm btn-block">Edit category</button>
+            </div>
+            <div class="card card-pad reveal stagger">
+              <div class="flex items-center justify-between mb-14"><h3 style="font-size:14.5px;">Vehicles</h3><span class="chip chip-neutral">9 assets</span></div>
+              <p class="muted" style="font-size:12.6px;">Optional field: registration expiry</p>
+              <hr class="divider">
+              <button class="btn btn-secondary btn-sm btn-block">Edit category</button>
+            </div>
+          </div>
+          <button class="btn btn-primary mt-20" data-open-modal="modal-add-cat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg> Add category</button>
+        </div>
+
+        <!-- Tab C: Employee Directory -->
+        <div class="tab-panel" data-tab-panel="emp">
+          <div class="filter-bar">
+            <label class="search-field"> <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg> <input placeholder="Search employees&hellip;"></label>
+            <select class="select"><option>All departments</option><option>Engineering</option><option>Facilities</option></select>
+            <select class="select"><option>All roles</option><option>Employee</option><option>Department Head</option><option>Asset Manager</option></select>
+            <button class="btn btn-primary btn-sm" style="margin-left:auto;" data-open-modal="modal-add-emp"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg> Add employee</button>
+          </div>
+          <div class="card">
+            <div class="table-wrap">
+              <table class="data-table">
+                <thead><tr><th>Name</th><th>Email</th><th>Department</th><th>Role</th><th>Status</th><th></th></tr></thead>
+                <tbody>
+                  <tr>
+                    <td class="row-title">Priya Shah</td><td class="muted">priya.shah@company.com</td><td>Engineering</td>
+                    <td><span class="chip chip-neutral">Employee</span></td><td><span class="chip chip-available"><span class="dot"></span>Active</span></td>
+                    <td class="table-actions"><button class="btn btn-sm btn-ghost">Promote</button></td>
+                  </tr>
+                  <tr>
+                    <td class="row-title">Aditi Rao</td><td class="muted">aditi.rao@company.com</td><td>Engineering</td>
+                    <td><span class="chip chip-allocated">Department Head</span></td><td><span class="chip chip-available"><span class="dot"></span>Active</span></td>
+                    <td class="table-actions"><button class="btn btn-sm btn-ghost">Edit</button></td>
+                  </tr>
+                  <tr>
+                    <td class="row-title">Rohan Verma</td><td class="muted">rohan.verma@company.com</td><td>Facilities</td>
+                    <td><span class="chip chip-reserved">Asset Manager</span></td><td><span class="chip chip-available"><span class="dot"></span>Active</span></td>
+                    <td class="table-actions"><button class="btn btn-sm btn-ghost">Edit</button></td>
+                  </tr>
+                  <tr>
+                    <td class="row-title">Arjun Nair</td><td class="muted">arjun.nair@company.com</td><td>Procurement</td>
+                    <td><span class="chip chip-neutral">Employee</span></td><td><span class="chip chip-retired"><span class="dot"></span>Inactive</span></td>
+                    <td class="table-actions"><button class="btn btn-sm btn-ghost">Promote</button></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <p class="faint mt-8" style="font-size:11.8px;">Promoting an employee to Department Head or Asset Manager is only done here &mdash; roles can never be self-assigned at signup.</p>
+        </div>
+      </div>
+
+    </main>
+  </div>
+</div>
+
+<div class="toast-stack"></div>
+
+<div class="modal-overlay" id="modal-add-dept">
+  <div class="modal">
+    <div class="modal-head"><div><h3>Add department</h3></div><button class="modal-close" data-close-modal>&times;</button></div>
+    <div class="modal-body">
+      <div class="field"><label>Department name</label><input class="input" placeholder="e.g. Marketing"></div>
+      <div class="field"><label>Department head</label><select class="select"><option>Select employee&hellip;</option><option>Priya Shah</option><option>Arjun Nair</option></select></div>
+      <div class="field"><label>Parent department (optional)</label><select class="select"><option>None</option><option>Field Ops</option></select></div>
+      <div class="field"><label>Status</label><select class="select"><option>Active</option><option>Inactive</option></select></div>
+    </div>
+    <div class="modal-foot"><button class="btn btn-ghost" data-close-modal>Cancel</button><button class="btn btn-primary" data-close-modal data-toast-demo="Department created">Save department</button></div>
+  </div>
+</div>
+<div class="modal-overlay" id="modal-add-cat">
+  <div class="modal">
+    <div class="modal-head"><div><h3>Add asset category</h3></div><button class="modal-close" data-close-modal>&times;</button></div>
+    <div class="modal-body">
+      <div class="field"><label>Category name</label><input class="input" placeholder="e.g. IT Peripherals"></div>
+      <div class="field"><label>Optional field name</label><input class="input" placeholder="e.g. Warranty period"></div>
+      <div class="field"><label>Field type</label><select class="select"><option>Text</option><option>Number</option><option>Date</option></select></div>
+    </div>
+    <div class="modal-foot"><button class="btn btn-ghost" data-close-modal>Cancel</button><button class="btn btn-primary" data-close-modal data-toast-demo="Category created">Save category</button></div>
+  </div>
+</div>
+<div class="modal-overlay" id="modal-add-emp">
+  <div class="modal">
+    <div class="modal-head"><div><h3>Add employee</h3><p>New records default to the Employee role.</p></div><button class="modal-close" data-close-modal>&times;</button></div>
+    <div class="modal-body">
+      <div class="field-row">
+        <div class="field"><label>Full name</label><input class="input" placeholder="Jane Doe"></div>
+        <div class="field"><label>Email</label><input class="input" type="email" placeholder="jane@company.com"></div>
+      </div>
+      <div class="field"><label>Department</label><select class="select"><option>Engineering</option><option>Facilities</option><option>Field Ops</option></select></div>
+    </div>
+    <div class="modal-foot"><button class="btn btn-ghost" data-close-modal>Cancel</button><button class="btn btn-primary" data-close-modal data-toast-demo="Employee added">Add employee</button></div>
+  </div>
+</div>
+
+<script src="js/script.js"></script>
+</body>
+</html>
