@@ -39,12 +39,28 @@ def login(request):
 
     return render(request, 'login.html')
 
+def logout(request):
+    request.session.flush()   # clears the whole session -> logs the user out
+    return redirect("/")
+
+
 def dashboard(request):
     userid = request.session.get("userid")
     user = User.objects.filter(id=userid).first()
 
-    
-    return render(request, 'dashboard.html',{'user':user})
+    available_count = Asset.objects.filter(status="AVAILABLE").count()
+    allocated_count = Asset.objects.filter(status="ALLOCATED").count()
+    maintenance_count = Asset.objects.filter(status="MAINTENANCE").count()
+    booking_count = Booking.objects.filter(status="UPCOMING").count()
+ 
+    context = {
+        'user': user,
+        'available_count': available_count,
+        'allocated_count': allocated_count,
+        'maintenance_count': maintenance_count,
+        'booking_count': booking_count,
+    }
+    return render(request, 'dashboard.html', context)
 
 def organization(request):
     userid = request.session.get("userid")
@@ -54,34 +70,34 @@ def organization(request):
 def assets(request):
     userid = request.session.get("userid")
     user = User.objects.filter(id=userid).first()
-    return render(request, 'assets.html')
+    return render(request, 'assets.html',{'user':user})
 
 def allocation(request):
     userid = request.session.get("userid")
     user = User.objects.filter(id=userid).first()
-    return render(request, 'allocation.html')
+    return render(request, 'allocation.html',{'user':user})
 
 def booking(request):
     userid = request.session.get("userid")
     user = User.objects.filter(id=userid).first()
-    return render(request, 'booking.html')
+    return render(request, 'booking.html',{'user':user})
 
 def maintenance(request):
     userid = request.session.get("userid")
     user = User.objects.filter(id=userid).first()
-    return render(request, 'maintenance.html')
+    return render(request, 'maintenance.html',{'user':user})
 
 def audit(request):
     userid = request.session.get("userid")
     user = User.objects.filter(id=userid).first()
-    return render(request, 'audit.html')
+    return render(request, 'audit.html',{'user':user})
 
 def reports(request):
     userid = request.session.get("userid")
     user = User.objects.filter(id=userid).first()
-    return render(request, 'reports.html')
+    return render(request, 'reports.html',{'user':user})
 
 def notifications(request):
     userid = request.session.get("userid")
     user = User.objects.filter(id=userid).first()
-    return render(request, 'notifications.html')
+    return render(request, 'notifications.html',{'user':user})

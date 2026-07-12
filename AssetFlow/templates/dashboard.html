@@ -89,23 +89,19 @@
       <div class="grid grid-4 mb-14">
         <div class="card kpi-card reveal stagger">
           <div class="kpi-top"><span class="kpi-label">Assets Available</span><div class="kpi-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 8l-9-5-9 5 9 5 9-5z"/><path d="M3 8v8l9 5 9-5V8"/><path d="M12 13v8"/></svg></div></div>
-          <div class="kpi-value"><span data-counter="128">0</span></div>
-          <span class="kpi-trend up">&uarr; 6 this week</span>
+          <div class="kpi-value"><span data-counter="{{available_count}}">0</span></div>
         </div>
         <div class="card kpi-card reveal stagger">
           <div class="kpi-top"><span class="kpi-label">Assets Allocated</span><div class="kpi-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M7 3L3 7l4 4"/><path d="M3 7h13a4 4 0 014 4v1"/><path d="M17 21l4-4-4-4"/><path d="M21 17H8a4 4 0 01-4-4v-1"/></svg></div></div>
-          <div class="kpi-value"><span data-counter="76">0</span></div>
-          <span class="kpi-trend flat">&rarr; steady</span>
+          <div class="kpi-value"><span data-counter="{{ allocated_count }}">0</span></div>
         </div>
         <div class="card kpi-card reveal stagger">
           <div class="kpi-top"><span class="kpi-label">Maintenance Today</span><div class="kpi-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M14.7 6.3a4 4 0 00-5.4 5.4L3 18v3h3l6.3-6.3a4 4 0 005.4-5.4l-2.8 2.8-2-2 2.8-2.8z"/></svg></div></div>
-          <div class="kpi-value"><span data-counter="4">0</span></div>
-          <span class="kpi-trend down">2 pending approval</span>
+          <div class="kpi-value"><span data-counter="{{ maintenance_count }}">0</span></div>
         </div>
         <div class="card kpi-card reveal stagger">
           <div class="kpi-top"><span class="kpi-label">Active Bookings</span><div class="kpi-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="4.5" width="18" height="16" rx="2"/><path d="M3 9.5h18M8 3v3M16 3v3"/><path d="M8 14h2M14 14h2M8 17h2"/></svg></div></div>
-          <div class="kpi-value"><span data-counter="9">0</span></div>
-          <span class="kpi-trend up">3 starting soon</span>
+          <div class="kpi-value"><span data-counter="{{ booking_count }}">0</span></div>
         </div>
       </div>
 
