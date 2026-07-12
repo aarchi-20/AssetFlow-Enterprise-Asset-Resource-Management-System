@@ -22,4 +22,14 @@ from AssetFlow import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('', views.login),
+    path('dashboard', views.dashboard),
+    path('organization', views.organization),
+    path('assets', views.assets),
+    path('allocation', views.allocation),
+    path('booking', views.booking),
+    path('maintenance', views.maintenance),
+    path('audit', views.audit),
+    path('reports', views.reports),
+    path('notifications', views.notifications),
 ]
