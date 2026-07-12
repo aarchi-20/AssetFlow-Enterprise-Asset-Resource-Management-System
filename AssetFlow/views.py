@@ -40,28 +40,48 @@ def login(request):
     return render(request, 'login.html')
 
 def dashboard(request):
-    return render(request, 'dashboard.html')
+    userid = request.session.get("userid")
+    user = User.objects.filter(id=userid).first()
+
+    
+    return render(request, 'dashboard.html',{'user':user})
 
 def organization(request):
-    return render(request, 'organization.html')
+    userid = request.session.get("userid")
+    user = User.objects.filter(id=userid).first()
+    return render(request, 'organization-setup.html',{'user':user})
 
 def assets(request):
+    userid = request.session.get("userid")
+    user = User.objects.filter(id=userid).first()
     return render(request, 'assets.html')
 
 def allocation(request):
+    userid = request.session.get("userid")
+    user = User.objects.filter(id=userid).first()
     return render(request, 'allocation.html')
 
 def booking(request):
+    userid = request.session.get("userid")
+    user = User.objects.filter(id=userid).first()
     return render(request, 'booking.html')
 
 def maintenance(request):
+    userid = request.session.get("userid")
+    user = User.objects.filter(id=userid).first()
     return render(request, 'maintenance.html')
 
 def audit(request):
+    userid = request.session.get("userid")
+    user = User.objects.filter(id=userid).first()
     return render(request, 'audit.html')
 
 def reports(request):
+    userid = request.session.get("userid")
+    user = User.objects.filter(id=userid).first()
     return render(request, 'reports.html')
 
 def notifications(request):
+    userid = request.session.get("userid")
+    user = User.objects.filter(id=userid).first()
     return render(request, 'notifications.html')
