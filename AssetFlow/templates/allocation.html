@@ -40,8 +40,10 @@
       </span>
     </div>
   </aside>
+
   <div class="sidebar-scrim" data-menu-toggle-scrim></div>
   <div class="main-col">
+
     <header class="topbar">
       <button class="menu-toggle" data-menu-toggle aria-label="Toggle menu"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
       <div class="topbar-title">
@@ -57,10 +59,12 @@
         
         <div class="topbar-user-meta">
           <div class="name">{{ user.name}}</div>
-          <div class="role">Asset Manager</div>
+          <div class="role">{{ user.role }}</div>
         </div>
       </div>
     </header>
+
+
     <main class="content">
 
       <div class="page-head">
@@ -123,21 +127,23 @@
         <div class="card-head"><h3>Overdue allocations</h3><span class="hint">Auto-flagged past Expected Return Date</span></div>
         <div class="table-wrap card-pad">
           <table class="data-table">
-            <thead><tr><th>Asset</th><th>Held by</th><th>Department</th><th>Expected return</th><th>Days overdue</th><th></th></tr></thead>
+            <thead>
+              <tr>
+                <th>Asset</th>
+                <th>Held by</th>
+                <th>Department</th>
+                <th>Expected return</th>
+                <th>Days overdue</th>
+                <th></th>
+              </tr>
+            </thead>
             <tbody>
               <tr>
-                <td><span class="tag-code">AF-0021</span></td><td>Neha Kapoor</td><td>Marketing</td><td>Jul 4, 2026</td>
+                <td><span class="tag-code">AF-0021</span></td>
+                <td>Neha Kapoor</td>
+                <td>Marketing</td>
+                <td>Jul 4, 2026</td>
                 <td><span class="chip chip-lost"><span class="dot"></span>3 days</span></td>
-                <td class="table-actions"><button class="btn btn-sm btn-secondary">Send reminder</button></td>
-              </tr>
-              <tr>
-                <td><span class="tag-code">AF-0033</span></td><td>Facilities Dept</td><td>Facilities</td><td>Jul 6, 2026</td>
-                <td><span class="chip chip-maintenance"><span class="dot"></span>1 day</span></td>
-                <td class="table-actions"><button class="btn btn-sm btn-secondary">Send reminder</button></td>
-              </tr>
-              <tr>
-                <td><span class="tag-code">AF-0087</span></td><td>Vikram Singh</td><td>Field Ops</td><td>Jun 29, 2026</td>
-                <td><span class="chip chip-lost"><span class="dot"></span>9 days</span></td>
                 <td class="table-actions"><button class="btn btn-sm btn-secondary">Send reminder</button></td>
               </tr>
             </tbody>

@@ -40,8 +40,10 @@
       </span>
     </div>
   </aside>
+
   <div class="sidebar-scrim" data-menu-toggle-scrim></div>
   <div class="main-col">
+
     <header class="topbar">
       <button class="menu-toggle" data-menu-toggle aria-label="Toggle menu"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
       <div class="topbar-title">
@@ -57,10 +59,11 @@
         
         <div class="topbar-user-meta">
           <div class="name">{{ user.name }}</div>
-          <div class="role">Asset Manager</div>
+          <div class="role">{{ user.role }}</div>
         </div>
       </div>
     </header>
+    
     <main class="content">
 
       <div class="page-head">
@@ -76,13 +79,63 @@
 
       <div class="grid grid-2">
         <div class="card reveal">
-          <div class="card-head"><h3>Utilization by department</h3><span class="hint">% of assets in active use</span></div>
-          <div class="card-pad"><div class="bar-chart"><div class="bar-col"><div class="bar" style="--h:82%;"></div><span class="bar-label">Engi</span></div><div class="bar-col"><div class="bar" style="--h:64%;"></div><span class="bar-label">Faci</span></div><div class="bar-col"><div class="bar" style="--h:58%;"></div><span class="bar-label">Fiel</span></div><div class="bar-col"><div class="bar" style="--h:41%;"></div><span class="bar-label">Proc</span></div><div class="bar-col"><div class="bar" style="--h:35%;"></div><span class="bar-label">Mark</span></div></div></div>
+          <div class="card-head">
+            <h3>Utilization by department</h3>
+            <span class="hint">% of assets in active use</span>
+          </div>
+          <div class="card-pad">
+            <div class="bar-chart">
+              <div class="bar-col">
+                <div class="bar" style="--h:82%;"></div>
+                <span class="bar-label">Engi</span></div>
+                <div class="bar-col">
+                  <div class="bar" style="--h:64%;"></div>
+                  <span class="bar-label">Faci</span></div>
+                  <div class="bar-col">
+                    <div class="bar" style="--h:58%;"></div>
+                    <span class="bar-label">Fiel</span>
+                  </div>
+                  <div class="bar-col">
+                    <div class="bar" style="--h:41%;"></div>
+                    <span class="bar-label">Proc</span>
+                  </div>
+                  <div class="bar-col">
+                    <div class="bar" style="--h:35%;"></div>
+                    <span class="bar-label">Mark</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
         <div class="card reveal">
-          <div class="card-head"><h3>Maintenance frequency</h3><span class="hint">By category, last 90 days</span></div>
-          <div class="card-pad"><div class="hbar-row"><span class="hbar-label">Electronics</span><div class="hbar-track"><div class="hbar-fill" data-width="90%"></div></div><span class="hbar-val">90%</span></div><div class="hbar-row"><span class="hbar-label">Vehicles</span><div class="hbar-track"><div class="hbar-fill" data-width="55%"></div></div><span class="hbar-val">55%</span></div><div class="hbar-row"><span class="hbar-label">Furniture</span><div class="hbar-track"><div class="hbar-fill" data-width="20%"></div></div><span class="hbar-val">20%</span></div></div>
-        </div>
+          <div class="card-head">
+            <h3>Maintenance frequency</h3>
+            <span class="hint">By category, last 90 days</span>
+          </div>
+          <div class="card-pad">
+            <div class="hbar-row">
+              <span class="hbar-label">Electronics</span>
+              <div class="hbar-track">
+                <div class="hbar-fill" data-width="90%"></div>
+              </div>
+              <span class="hbar-val">90%</span>
+            </div>
+            <div class="hbar-row">
+              <span class="hbar-label">Vehicles</span>
+              <div class="hbar-track">
+                <div class="hbar-fill" data-width="55%"></div>
+              </div>
+              <span class="hbar-val">55%</span>
+            </div>
+            <div class="hbar-row">
+              <span class="hbar-label">Furniture</span>
+              <div class="hbar-track">
+                <div class="hbar-fill" data-width="20%"></div>
+              </div>
+              <span class="hbar-val">20%</span>
+            </div>
+          </div>
       </div>
 
       <div class="grid grid-3 mt-20">
